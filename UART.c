@@ -78,7 +78,7 @@ extern int string2num(int L, char *string){
         Num = Num + (Posicion * (string[i] - '0'));
         Posicion = (Posicion / 10);
     }
-    duty = (int) ((Num * 6250) / 255.0); 
+    duty =(int)((1.0 - (Num / 255.0)) * (6250));
     return duty;
 }
 

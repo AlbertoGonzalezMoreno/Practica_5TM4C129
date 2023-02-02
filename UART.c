@@ -70,14 +70,26 @@ extern int readString(char delimitador, char *string)
 }
 
 extern int string2num(int L, char *string){
-    int Num = 0;
+    uint16_t Num = 0;
     int duty = 0;
-    int Posicion = (L*10);
-    for(int i = 0; i < L; i++)
-    {
-        Num = Num + (Posicion * (string[i] - '0'));
-        Posicion = (Posicion / 10);
+    int p =((string[0]) - 48);
+    int q =((string[1]) - 48);
+    int r =((string[2]) - 48);
+    //int g = ((string[1]) - 48); "8"
+
+if(L == 3){
+ Num = ((100 * p) + (10 * q) + (r));
+}
+else {
+    if(L==2){
+    Num = ((10 * p) + (q));
     }
+    else{
+        if(L == 1){
+            Num = p;
+        }
+    }
+}
     duty =(int)((1.0 - (Num / 255.0)) * (6250));
     return duty;
 }
